@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-export function useWebSocket(url = 'ws://localhost:8000/ws/signals') {
+const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:8000/ws/signals';
+
+export function useWebSocket(url = WS_URL) {
   const [signals, setSignals] = useState([]);
   const [connected, setConnected] = useState(false);
   const wsRef = useRef(null);
